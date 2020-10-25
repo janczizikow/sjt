@@ -6,4 +6,9 @@ function getFileExtension(fileName) {
   return match[0];
 }
 
-module.exports = { getFileExtension };
+function isNotEmpty(str) {
+  const re = /[^\s\\n]/gim;
+  return re.test(str);
+}
+
+module.exports = { getFileExtension, isNotEmpty };

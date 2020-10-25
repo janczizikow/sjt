@@ -8,7 +8,7 @@ const commander = require('commander');
 const { parse } = require('@babel/parser');
 const traverse = require('@babel/traverse').default;
 const camelCase = require('lodash.camelcase');
-const { getFileExtension } = require('./utils');
+const { getFileExtension, isNotEmpty } = require('./utils');
 const pkg = require('./package.json');
 
 function run() {
@@ -97,8 +97,8 @@ async function scan(file, enableLogging = true) {
 
   traverse(ast, {
     JSXText(path) {
-      // TODO: filter out empty line breaks in a better way
-      if (!/\n\s*/.test(path.node.value)) {
+      // some of the text nodes contain only white space characters
+      if (isNotEmpty(path.node.value)) {
         let key = camelCase(fileName) + '.' + camelCase(path.node.value);
         const keyExists = Object.prototype.hasOwnProperty.call(text, key);
         if (keyExists) {
