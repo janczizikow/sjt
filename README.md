@@ -5,8 +5,14 @@
 </p>
 
 <p align="center">
+  <a href="https://circleci.com/gh/janczizikow/sjt">
+    <img src="https://circleci.com/gh/janczizikow/sjt.svg?style=svg" alt="CircleCI" />
+  </a>
+  <a href="https://codecov.io/gh/janczizikow/sjt">
+    <img src="https://img.shields.io/codecov/c/github/janczizikow/sjt?style=flat-square" alt="code coverage" />
+  </a>
   <a href="https://www.npmjs.com/package/sjt">
-    <img src="https://img.shields.io/npm/v/sjt.svg?style=flat-square" alt="npm"/>
+    <img src="https://img.shields.io/npm/v/sjt.svg?style=flat-square" alt="npm version"/>
   </a>
   <a href="https://github.com/janczizikow/sjt/blob/main/LICENSE">
     <img src="https://img.shields.io/npm/l/sjt.svg?style=flat-square" alt="license" />
