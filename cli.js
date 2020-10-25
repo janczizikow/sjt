@@ -80,7 +80,7 @@ async function scan(file, enableLogging = true) {
       sourceType: 'module',
       plugins: [
         'jsx',
-        // flow and typescript plugins cannot be combinded
+        // flow and typescript plugins cannot be combined
         /jsx?/.test(fileWithExtension) ? 'flow' : 'typescript',
       ],
     });
