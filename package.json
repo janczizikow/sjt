@@ -1,7 +1,7 @@
 {
   "name": "sjt",
   "version": "0.0.1",
-  "description": "Copy text from JSXText nodes into a seprate file",
+  "description": "Copy text from JSXText nodes into a separate file",
   "keywords": [
     "react",
     "jsx",

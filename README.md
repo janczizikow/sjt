@@ -16,7 +16,7 @@
   </a>
 </p>
 
-<p>Copy text from JSXText nodes into a seprate file:</p>
+<p>Copy text from JSXText nodes into a separate file:</p>
 
 ```sh
 # example.js
