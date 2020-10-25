@@ -12,6 +12,7 @@ jobs:
       - checkout
       - node/install:
           install-yarn: true
+      - run: yarn install
       - run: yarn test
       - codecov/upload:
           file: './coverage/clover.xml'
