@@ -121,7 +121,7 @@ async function scan(file, enableLogging = true) {
 
   try {
     await fs.promises.writeFile(
-      path.join(__dirname, `${fileName}.json`),
+      path.join(process.cwd(), `${fileName}.json`),
       JSON.stringify(text, null, 2) + os.EOL,
       { encoding: 'utf8' }
     );
