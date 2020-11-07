@@ -1,6 +1,10 @@
 const { italic } = require('chalk');
 const { description } = require('commander');
-const { getFileExtension, isNotEmpty } = require('../utils');
+const {
+  getFileExtension,
+  isNotEmpty,
+  normalizeWhiteSpace,
+} = require('../utils');
 
 describe('getFileExtension', () => {
   it("returns `null` if there's no match", () => {
@@ -36,5 +40,17 @@ describe('isNotEmpty', () => {
 
   it("accepts a string that doesn't contain whitespace characters", () => {
     expect(isNotEmpty('test')).toBeTruthy();
+  });
+});
+
+describe('normalizeWhiteSpace', () => {
+  it('correctly removes extra whitespace', () => {
+    expect(
+      normalizeWhiteSpace(
+        '\n        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem inventore\n        architecto voluptatum magnam, aspernatur aut harum illum veritatis eos\n        sunt necessitatibus id dicta est iusto omnis sapiente asperiores cumque\n        porro?\n      '
+      )
+    ).toBe(
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem inventore architecto voluptatum magnam, aspernatur aut harum illum veritatis eos sunt necessitatibus id dicta est iusto omnis sapiente asperiores cumque porro?'
+    );
   });
 });

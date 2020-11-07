@@ -8,7 +8,11 @@ const commander = require('commander');
 const { parse } = require('@babel/parser');
 const traverse = require('@babel/traverse').default;
 const camelCase = require('lodash.camelcase');
-const { getFileExtension, isNotEmpty } = require('./utils');
+const {
+  getFileExtension,
+  isNotEmpty,
+  normalizeWhiteSpace,
+} = require('./utils');
 const pkg = require('./package.json');
 
 function run() {
@@ -97,15 +101,16 @@ async function scan(file, enableLogging = true) {
 
   traverse(ast, {
     JSXText(path) {
+      const normalized = normalizeWhiteSpace(path.node.value);
       // some of the text nodes contain only white space characters
-      if (isNotEmpty(path.node.value)) {
-        let key = camelCase(fileName) + '.' + camelCase(path.node.value);
+      if (isNotEmpty(normalized)) {
+        let key = camelCase(fileName) + '.' + camelCase(normalized);
         const keyExists = Object.prototype.hasOwnProperty.call(text, key);
         if (keyExists) {
           i++;
           key += i;
         }
-        text[key] = path.node.value;
+        text[key] = normalized;
       }
     },
   });
