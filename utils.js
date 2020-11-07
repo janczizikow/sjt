@@ -11,4 +11,8 @@ function isNotEmpty(str) {
   return re.test(str);
 }
 
-module.exports = { getFileExtension, isNotEmpty };
+function normalizeWhiteSpace(str) {
+  return str.replace(/\s+/gim, ' ').trim();
+}
+
+module.exports = { getFileExtension, isNotEmpty, normalizeWhiteSpace };
