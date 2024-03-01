@@ -49,7 +49,21 @@ function run() {
     process.exit(1);
   }
 
-  scan(path.resolve(filePath), !program.silent);
+  processPath(filePath, !program.silent);
+}
+
+async function processPath(filePath, enableLogging = true) {
+  const stats = await fs.promises.stat(filePath);
+
+  if (stats.isDirectory()) {
+    const paths = await fs.promises.readdir(filePath);
+
+    paths.forEach(subPath => {
+      processPath(path.resolve(filePath, subPath), enableLogging);
+    });
+  } else {
+    scan(path.resolve(filePath), enableLogging);
+  }
 }
 
 async function scan(file, enableLogging = true) {
